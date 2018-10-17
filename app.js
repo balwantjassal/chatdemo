@@ -2,11 +2,11 @@ var express = require("express");
 var app = express();
 var http = require("http").Server(app);
 var io = require('socket.io')(http);
-require("./router/main.js")(app);
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 var xdata;
-
+require("./router/main.js")(app);
 io.on('connection', function(socket){
     console.log('a user connected');
     socket.on('chat message',function(msg){
