@@ -9,11 +9,11 @@ module.exports = function(app){
         res.render("about.html");
     });
     app.get("/contact",(req,res)=>{
-        if(data){
-            res.render("contact.html",{"ContactDetails":data});
-        }else{
-            res.render("contact.html");
-        }
+        Contact.find({},{},function(err,docs){
+            res.render("contact.html",{contacts:docs});
+         });
+           // res.render("contact.html");
+      
     });
     app.get("/chat",(req,res)=>{
         res.render("chat.html");
@@ -26,10 +26,13 @@ module.exports = function(app){
      var data = {name:req.body.name,email:req.body.email,message:req.body.message};
      Contact.create(data,function(err, record){
          if(err) throw err;
-         res.send("Testing Data:"+record); 
+         Contact.find({},{},function(err,docs){
+            res.render("contact.html",{contacts:docs});
+         });
 
      });
-       
+    
+    
    });
     
 }
