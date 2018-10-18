@@ -1,8 +1,4 @@
-
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<% include partials/header %>
 <title>Single page web app using Angularjs</title>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
@@ -32,10 +28,10 @@
                 <form method="POST" action="/login">
                 <legend>Login Form</legend>
                  Username:
-                 <input type="text" name="uname" class="form-control" placeholder="Enter Username" />
+                 <input type="username" name="uname" class="form-control" placeholder="Enter Username" />
                  <br/>
                  Password:
-                 <input type="text" name="upass" class="form-control" placeholder="Enter Password" />
+                 <input type="password" name="upass" class="form-control" placeholder="Enter Password" />
                  <br/>
                  <input type="Submit" value="Login" class="btn-primary" />
                  <br/>
@@ -44,8 +40,7 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+<% include partials/footer %>
 <!--<html>
     <head>
         <title>Testing Forms</title>
