@@ -29,5 +29,22 @@ var ContactSchema = new mongoose.Schema({
     }
 
 });
+var UserSchema = new mongoose.Schema({
+    username:{
+        type:String,
+        unique:true,
+        required:true,
+        trim:true
+    },
+    password:{
+        type:String,
+        trim:true
+    }
+});
+UserSchema.methods.validPassword = function( pwd ) {
+    // EXAMPLE CODE!
+    return ( this.password === pwd );
+};
 var Contact = mongoose.model("Contact",ContactSchema);
-module.exports = Contact;
+var User = mongoose.model("User",UserSchema);
+module.exports = [ Contact, User ];
