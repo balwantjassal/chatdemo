@@ -1,20 +1,23 @@
 
 var Contact = require("./../models/Schema")[0];
 
-
+var sess;
 
 module.exports = function(app,passport){
     
     app.get("/",(req,res)=>{
+        sess = req.session;
         res.render("index.html");
     });
     app.post('/login',passport.authenticate('local'),function(req, res) {
                     // If this function gets called, authentication was successful.
                     // `req.user` contains the authenticated user.
+                    sess.username = req.user.username;
                     res.redirect('/chat');
     });
 
     app.get("/about",(req,res)=>{
+        console.log(sess.username);
         res.render("about.html");
     });
     app.get("/contact",(req,res)=>{

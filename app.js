@@ -6,12 +6,13 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true }
-  }))
+  }));
 var http = require("http").Server(app);
 var io = require('socket.io')(http);
 var User = require("./models/Schema")[1];
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
+
 passport.use(new LocalStrategy(
     function(username, password, done) {
         User.findOne({ username: username }, function(err, user) {
